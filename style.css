@@ -1,0 +1,125 @@
+.menu{
+    float: left;
+}
+.drop-down
+{
+    position:absolute;
+    top:56px;
+    left:0;
+    line-height:18px;
+    z-index:9999;
+    display:none;
+    -webkit-box-shadow:0 0 3px 3px rgba(0,0,0,.1);
+    -moz-box-shadow:0 0 3px 3px rgba(0,0,0,.1);
+    box-shadow:0 0 3px 3px rgba(0,0,0,.1);
+    border-radius:6px;
+    overflow:hidden;
+    min-width:100%;
+    background-color:rgba(255,255,255,.7);
+    filter:progid:
+    DXImageTransform.Microsoft.gradient(startColorstr=#B2ffffff, endColorstr=#B2ffffff)
+}
+.drop-down-inner{
+    display:none;
+    position:absolute;
+    left:0;
+    top:40px;
+    width:86px;
+    height:auto;
+    padding:8px 4px 0
+}
+/*.header .menu-dropdown .menu-dropdown-inner{*/
+    /*overflow:hidden;*/
+    /*display:table;*/
+    /*width:100%*/
+/*}*/
+.header{
+    width:1200px;
+    display:table;
+    margin:0 auto
+}
+.header ul li{float: left}
+.image{
+    float: none;
+}
+.header .logo{
+    float: left;
+}
+.header .menu{
+    float: left;
+    margin: -10px;
+    width: 900px;
+    height: 135px;
+    background: #a1a9a8;
+    font-family: 微软雅黑;
+    font-size: 40px;
+    list-style-type: none;
+}
+.header .menu .top-menu-item{
+    text-decoration: none;
+    color: #007bff;
+}
+.header ul li div{
+    display: none;
+}
+.header ul li:hover div{
+    display: block;
+}
+.header .menu-dropdown .menu-dropdown-inner p a{
+    display:block;
+    line-height:20px;
+    padding:0px;
+    white-space:nowrap;
+    font-size:16px;color:#000
+}
+.header .menu-dropdown .menu-dropdown-inner p a:hover{
+    text-decoration:none;
+    background-color:#1e90ff;
+    color:#fff
+}
+
+.menu li.top-menu-item .menu-hd{
+    display:inline-block;
+    padding-right:20px;
+    color:#666;
+    text-decoration:none
+}
+.header .menu li.top-menu-item .menu-hd span{
+    padding:10px;
+    font-size:16px;
+    color:#222
+}
+.header .menu li.top-menu-item .menu-hd-notlink{
+    cursor:default
+}
+.header .menu li.top-menu-curr .menu-hd span,.header .menu li.top-menu-item:hover .menu-hd span{
+    color:#2088c2
+}
+.header .menu li.top-menu-noclick .menu-hd{
+    cursor:pointer
+}
+.header .menu li.top-menu-noclick .menu-hd:before{
+    content:'';
+    display:block;
+    width:0;
+    height:0;
+    border-left:5px solid transparent;
+    border-right:5px solid transparent;
+    border-top:6px solid #666;
+    position:absolute;
+    right:10px;
+    top:28px
+}
+.image{
+    margin: auto;
+    width: 1200px;
+    opacity: 0.5;
+    margin: -8px;
+}
+.ddd{
+    display:block;
+    line-height:40px;
+    padding:0 10px;
+    white-space:nowrap;
+    font-size:16px;color:#000
+}
