@@ -2,9 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>航班号查询</title>
+    <title>航班助手</title>
+    <script>
+        var flightnum;
+
+    </script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<script>
+    var flightnum="1";
+    var date=new Date();
+    var url="http://114.115.134.119:5000/beta/detailedInfo";
+    function getnum(num){
+        this.flightnum=num;
+    }
+    function getdate(date){
+        this.date = date;
+    }
+    // function wr(){
+    //     document.write(flightnum);
+    //     document.write(date);
+    // }
+    function createXmlHttpRequest(){
+        return new XMLHttpRequest();
+    }
+    function checkUser() {
+        XmlHttpRequest = createXmlHttpRequest();
+        XmlHttpRequest.onreadystatechange = finish;
+        XmlHttpRequest.open("POST", url, true);
+        XmlHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        XmlHttpRequest.send(flightnum);
+        if(XmlHttpRequest.readyState == 4&& XmlHttpRequest.status == 200){
+            alert("success");
+        }
+    }
+</script>
+<div class="header">
+    <div class="logo">
+        <a href="homepage.html">
+            <img src="logo.jpg" width="200px" alt="logo">
+        </a>
+    </div>
+    <ul class="menu">
+        <li class="top-menu-item top-menu-noclick">
+            <a class="menu-hd cur_pointer"><span>首页</span></a>
+        </li>
+        <li class="top-menu-item top-menu-noclick">
+            <a class="menu-hd"><span>航班查询</span></a>
+            <div class="menu-dropdown">
+                <div class="menu-dropdown-inner">
+                    <p><a href="flight_num.html">按航班号</a></p>
+                    <p><a href="takeoff_land.html">按起降地</a></p>
+                </div>
+            </div>
+        </li>
+        <li class="top-menu-item top-menu-noclick">
+            <a href="personal.html" class="menu-hd"><span>个人中心</span></a>
+            <div class="menu-dropdown">
+                <div class="menu-dropdown-inner">
+                    <p><a href="changepwd.html">修改密码</a></p>
+                    <p><a href="homepage.html">登出</a></p>
+                    <p><a href="personalinfo">我的信息</a></p>
+                    <p><a href="history">行程历史</a></p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="mainimage">
+    <div class="image">
+        <img src="page1.jpg" width="1500px">
+    </div>
+    <div>
+        <p><input type="text" placeholder="请输入航班号，如CA111" maxlength="10" size="20" onchange="getnum(this.value)"></p>
+        <p><input type="date" placeholder="出发日期" size="20" onchange="getdate(this.value)"></p>
+        <p><input type="button" id="in" value="查询" onclick="checkUser()"></p>
 
+    </div>
+</div>
 </body>
 </html>
