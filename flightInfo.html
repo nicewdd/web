@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>航班信息</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="jquery.js"></script>
+    <script>
+        var url = location.search; //获取url中"?"符后的字串URLDecoder.decode(url, "UTF-8");
+        var op = 0;
+        var flightCode;
+        var cityFrom;
+        var cityTo;
+        var date;
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);//substr()方法返回从参数值开始到结束的字符串；
+            strs = str.split("&");
+            if(strs[0].split(":")[1] == "1"){
+                op = 1;
+            }
+            else{
+                op = 2;
+            }
+            flightCode = strs[1].split(":")[1];
+            cityFrom = strs[2].split(":")[1];
+            cityTo = strs[3].split(":")[1];
+            date = strs[4].split(":")[1];
+        }
+    </script>
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <a href="homepage.html">
+            <img src="image/logo.jpg" width="200px" alt="logo">
+        </a>
+    </div>
+    <ul class="menu">
+        <li class="top-menu-item top-menu-noclick">
+            <a href="homepage.html" class="menu-hd cur_pointer"><span>首页</span></a>
+        </li>
+        <li class="top-menu-item top-menu-noclick">
+            <a class="menu-hd" ><span>航班查询</span></a>
+            <div class="menu-dropdown">
+                <div class="menu-dropdown-inner">
+                    <p><a href="flight_num.html">按航班号</a></p>
+                    <p><a href="takeoff_land.html">按起降地</a></p>
+                </div>
+            </div>
+        </li>
+        <li class="top-menu-item top-menu-noclick">
+            <a class="menu-hd"><span>个人中心</span></a>
+            <div class="menu-dropdown">
+                <div class="menu-dropdown-inner">
+                    <p><a href="changepwd.html">修改密码</a></p>
+                    <p><a href="homepage.html">登出</a></p>
+                    <p><a href="personalinfo">我的信息</a></p>
+                    <p><a href="history">行程历史</a></p>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul>
+        <li class="login">
+            <a href="login.html" class="logbtn">登录/注册</a>
+        </li>
+    </ul>
+</div>
+<div class="mainimage">
+    <div class="image">
+        <img src="image/page1.jpg" width="100%">
+    </div>
+</div>
+</body>
+<script>
+    function ajaxFunction(){
+        var xmlHttp;
+        try{ // Firefox, Opera 8.0+, Safari
+            xmlHttp=new XMLHttpRequest();
+        }
+        catch (e){
+            try{// Internet Explorer
+                xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e){
+                try{
+                    xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                catch (e){}
+            }
+        }
+
+        return xmlHttp;
+    }
+    window.onload = function(){
+            var dateString =date.toString();
+            dateString = dateString.replace(/-/g,'',);
+            var way = 1;
+            alert(flightCode);
+            var jsonData = JSON.stringify({
+                op:1,
+                flightCode:flightCode,
+                cityFrom:cityFrom,
+                cityTo:cityTo,
+                date:date,
+            })
+            var xhr = ajaxFunction();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4){
+                    responseData = JSON.parse(xhr.responseText);
+                    alert(JSON.stringify(responseData));
+                }
+            }
+            xhr.open("POST","http://114.115.134.119:5000/beta/byFlightNumber",true);
+            xhr.setRequestHeader("Content-type","application/json");
+            xhr.send(jsonData);
+    }
+</script>
+</html>

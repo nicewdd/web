@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>航班助手</title>
+    <script>
+        var flightnum;
+
+    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -10,25 +14,23 @@
 <script>
     var flightnum="1";
     var date=new Date();
-    var dateString;
-    var responseData;
     function getnum(num){
         this.flightnum=num;
     }
     function getdate(date){
         this.date = date;
-        dateString =date.toString();
-        dateString = dateString.replace(/-/g,'',);
     }
-    function send(){
-        var op = 1;
-        window.location.href = "flightInfo.html?op:" + op + "&flightCode:" + flightnum + "&cityFrom:" + "" + "&cityTo:" + "" + "&data:" + dateString;
-    }
+    // function wr(){
+    //     document.write(flightnum);
+    //     document.write(date);
+    // }
+
+
 </script>
 <div class="header">
     <div class="logo">
         <a href="homepage.html">
-            <img src="image/logo.jpg" width="200px" alt="logo">
+            <img src="logo.jpg" width="200px" alt="logo">
         </a>
     </div>
     <ul class="menu">
@@ -59,13 +61,60 @@
 </div>
 <div class="mainimage">
     <div class="image">
-        <img src="image/page1.jpg" width="100%">
+        <img src="page1.jpg" width="100%">
     </div>
     <div>
         <p><input type="text" placeholder="请输入航班号，如CA111" maxlength="10" size="20" onchange="getnum(this.value)"></p>
         <p><input type="date" placeholder="出发日期" size="20" onchange="getdate(this.value)"></p>
-        <p><input type="button" id="in" value="查询" onclick="send()"></p>
+        <p><a href="" <input type="button" id="in" value="查询"></p>
+
     </div>
 </div>
 </body>
+<script>
+    var responseData;
+    function ajaxFunction(){
+        var xmlHttp;
+        try{ // Firefox, Opera 8.0+, Safari
+            xmlHttp=new XMLHttpRequest();
+        }
+        catch (e){
+            try{// Internet Explorer
+                xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e){
+                try{
+                    xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                catch (e){}
+            }
+        }
+
+        return xmlHttp;
+    }
+    window.onload = function(){
+        document.getElementById("in").onclick = function(){
+            var dateString =date.toString();
+            dateString = dateString.replace(/-/g,'',);
+            var way = 1;
+            var josnData = JSON.stringify({
+                op:1,
+                flightCode:flightnum,
+                cityFrom:'',
+                cityTo:'',
+                date:dateString,
+            })
+            var xhr = ajaxFunction();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4){
+                    responseData = JSON.parse(xhr.responseText);
+                    alert(JSON.stringify(responseData[0].corp_name));
+                }
+            }
+            xhr.open("POST","http://114.115.134.119:5000/beta/byFlightNumber",true);
+            xhr.setRequestHeader("Content-type","application/json");
+            xhr.send(josnData);
+        }
+    }
+</script>
 </html>
