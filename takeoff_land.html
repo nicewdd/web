@@ -3,50 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>航班助手</title>
-    <script>
-        var flightnum;
-
-    </script>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 <script>
-    var takeoff="";
-    var land="";
-    var url="http://114.115.134.119:5000/beta/detailedInfo";
-    function gettake(takeplace){
-        this.takeoff=takeplace;
+    var fromCity;
+    var toCity;
+    var date=new Date();
+    var dateString;
+    var responseData;
+    function getTake(fromCity){
+        this.fromCity=fromCity;
     }
-    function getland(landplace){
-        this.land=landplace;
+    function getTo(toCity){
+        this.toCity=toCity;
     }
-    // function wr(){
-    //     document.write(flightnum);
-    //     document.write(date);
-    // }
-    function createXmlHttpRequest(){
-        return new XMLHttpRequest();
+    function getdate(date){
+        this.date = date;
+        dateString =date.toString();
+        dateString = dateString.replace(/-/g,'',);
     }
-    function checkUser() {
-        XmlHttpRequest = createXmlHttpRequest();
-        XmlHttpRequest.onreadystatechange = finish;
-        XmlHttpRequest.open("POST", url, true);
-        XmlHttpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        XmlHttpRequest.send(flightnum);
-        if(XmlHttpRequest.readyState == 4&& XmlHttpRequest.status == 200){
-            alert("success");
-        }
+    function send(){
+        var op = 2;
+        window.location.href = "flightInfo.html?op:" + op + "&flightCode:" + "" + "&cityFrom:" + fromCity + "&cityTo:" + toCity + "&data:" + dateString;
     }
 </script>
 <div class="header">
     <div class="logo">
         <a href="homepage.html">
-            <img src="logo.jpg" width="200px" alt="logo">
+            <img src="image/logo.jpg" width="200px" alt="logo">
         </a>
     </div>
     <ul class="menu">
         <li class="top-menu-item top-menu-noclick">
-            <a href="homepage.html" class="menu-hd cur_pointer"><span>首页</span></a>
+            <a class="menu-hd cur_pointer"><span>首页</span></a>
         </li>
         <li class="top-menu-item top-menu-noclick">
             <a class="menu-hd"><span>航班查询</span></a>
@@ -58,7 +49,7 @@
             </div>
         </li>
         <li class="top-menu-item top-menu-noclick">
-            <a class="menu-hd"><span>个人中心</span></a>
+            <a href="personal.html" class="menu-hd"><span>个人中心</span></a>
             <div class="menu-dropdown">
                 <div class="menu-dropdown-inner">
                     <p><a href="changepwd.html">修改密码</a></p>
@@ -72,12 +63,13 @@
 </div>
 <div class="mainimage">
     <div class="image">
-        <img src="page1.jpg" width="1500px">
+        <img src="image/page1.jpg" width="100%">
     </div>
     <div>
-        <p><input type="text" placeholder="出发城市，如PEK" maxlength="10" size="20" onchange="gettake(this.value)"></p>
-        <p><input type="text" placeholder="到达城市 如HKG" maxlength="10" size="20" onchange="getoff(this.value)"></p>
-        <p><input type="button" id="in" value="查询" onclick="checkUser()"></p>
+        <p><input type="text" placeholder="请输入出发地 如PEK" maxlength="10" size="20" onchange="getTake(this.value)"></p>
+        <p><input type="text" placeholder="请输入到达地 如SHA" maxlength="10" size="20" onchange="getTo(this.value)"></p>
+        <p><input type="date" placeholder="出发日期" size="20" onchange="getdate(this.value)"></p>
+        <p><input type="button" id="in" value="查询" onclick="send()"></p>
     </div>
 </div>
 </body>

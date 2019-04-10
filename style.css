@@ -148,3 +148,13 @@
     font-size:16px;color:#000;
     float: right;
 }
+/*
+下面是有关航班信息的css
+ */
+.data .data-table .flight-data-hd{
+    position: relative;
+    border: 1px solid #b4bdb8;
+}
+.flight-data-list{
+    border: 10px solid red;
+}

@@ -70,9 +70,14 @@
     <div class="image">
         <img src="image/page1.jpg" width="100%">
     </div>
+    <div id="data" class="data">
+
+    </div>
 </div>
 </body>
 <script>
+    var responseData;
+    var length;
     function ajaxFunction(){
         var xmlHttp;
         try{ // Firefox, Opera 8.0+, Safari
@@ -94,21 +99,38 @@
     }
     window.onload = function(){
             var dateString =date.toString();
-            dateString = dateString.replace(/-/g,'',);
-            var way = 1;
-            alert(flightCode);
+            dateString = dateString.replace(/-/g,'',)
             var jsonData = JSON.stringify({
-                op:1,
+                op:op,
                 flightCode:flightCode,
                 cityFrom:cityFrom,
                 cityTo:cityTo,
                 date:date,
             })
             var xhr = ajaxFunction();
+            var str = "";
             xhr.onreadystatechange = function(){
                 if(xhr.readyState==4){
                     responseData = JSON.parse(xhr.responseText);
+                    length = responseData.length;
                     alert(JSON.stringify(responseData));
+                    str=str+'<table class="data-table">'+'<tr class="flight-data-hd"><th>所属航空公司</th><th>航班号</th><th>计划起飞</th><th>实际起飞</th><th>出发地</th><th>计划到达</th><th>实际到达</th><th>到达地</th><th>状态</th></tr>';
+                    for(var i = 0;i<length;i++){
+                        str = str+'<tr>'+
+                            '<td colspan="2">'+JSON.stringify(responseData[i].corp_name)+'</td>'+
+                            '<td class="flight-data">'+JSON.stringify(responseData[i].flight_code)+'</td>'+
+                            '<td class="flight-data">'+JSON.stringify(responseData[i].dep_time_plan)+'</td>'+
+                            '<td class="flight-data">'+JSON.stringify(responseData[i].dep_time_act)+'</td>'+
+                            '<td class="flight-data">'+JSON.stringify(responseData[i].dep_airp)+'</td>'+
+                            '<td class="flight-data">'+JSON.stringify(responseData[i].arri_time_plan)+'</td>'+
+                            '<td class="flight-data">'+JSON.stringify(responseData[i].arri_time_act)+'</td>'+
+                            '<td class="flight-data">'+JSON.stringify(responseData[i].arri_airp)+'</td>'+
+                            '<td class="flight-data">'+JSON.stringify(responseData[i].flight_status)+'</td>'+
+                            '</tr>';
+                    }
+                    str=str+'</table>';
+                    str=str.replace(/"/g,'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp',)
+                    document.getElementById("data").innerHTML=str;
                 }
             }
             xhr.open("POST","http://114.115.134.119:5000/beta/byFlightNumber",true);
