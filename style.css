@@ -143,7 +143,7 @@
     list-style-type: none;
     border-radius: 5px;
 }
-.login .logbtn{
+.logbtn{
     text-decoration: none;
     font-size:16px;color:#000;
     float: right;
@@ -151,10 +151,349 @@
 /*
 下面是有关航班信息的css
  */
-.data .data-table .flight-data-hd{
+.data{
+    background: #c3c6e2;
     position: relative;
+    top: 100px;
     border: 1px solid #b4bdb8;
+}
+.data-num{
+    position: relative;
+    top: 100px;
 }
 .flight-data-list{
     border: 10px solid red;
+}
+/*
+下面是有关登录页面的css
+ */
+.title{
+    position: relative;
+    top: 80px;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "微软雅黑 Light";
+}
+.input-window{
+    background: #faffff;
+    line-height:2;
+    font-size: 1rem;
+    padding: 0.375rem 0.75rem;
+    border: 2px;
+    border-radius: 5px;
+}
+.login-window{
+    position: relative;
+    top: 80px;
+    text-align: center;
+    width: 100%;
+    height: 500px;
+}
+.usename{
+    position: relative;
+    left: -252px;
+}
+.pwd{
+    position: relative;
+    left: -260px;
+}
+.tel{
+    position: relative;
+    left: -230px;
+}
+.email{
+    position: relative;
+    left: -245px;
+}
+.remember{
+    position: relative;
+    left: -230px;
+}
+.forget{
+    text-decoration: none;
+    font-family: 微软雅黑;
+    color: black;
+    position: relative;
+    top: -38px;
+    left: 240px;
+}
+.login-btn{
+    position: relative;
+    font-family: 微软雅黑;
+    font-size: large;
+    background-color: #4db960;
+    border-radius: 5px;
+    width: 555px;
+    height: 30px;
+    cursor: pointer;
+}
+.noAccount{
+    position: relative;
+    top: -40px;
+    text-decoration: none;
+    font-family: 微软雅黑;
+    color: black;
+}
+/*
+以下是详细航班信息的css
+ */
+.detail{
+    width: 800px;
+    margin: auto;
+}
+.detail .mainInfo{
+    width: 100%;
+    font-family: 微软雅黑;
+    font-size: medium;
+    position: relative;
+    top: 10px;
+}
+.detail .status{
+    color: #2a33ff;
+    float: right;
+    position: relative;
+    top: -53px;
+}
+.wholeJourney{
+    height: 120%;
+    background-color: aliceblue;
+}
+.detail .wholeJourney .distanceAndTime{
+    text-align: center;
+    position: relative;
+    top: 15px;
+}
+.detail .wholeJourney .takeOff{
+    text-align: center;
+    position: relative;
+    font-size: medium;
+    color: #303037;
+}
+.detail .planInfo{
+    position: relative;
+    top: 1px;
+    height: 50px;
+    background-color: aliceblue;
+    font-size: small;
+    font-family: 微软雅黑;
+}
+.planInfo .planInfoItem1{
+    position: relative;
+    float: left;
+    left: 70px;
+}
+.planInfo .planInfoItem2{
+    position: relative;
+    float: left;
+    left: 150px;
+}
+.planInfo .planInfoItem3{
+    position: relative;
+    float: left;
+    left: 230px;
+}
+.planInfo .planInfoItem4{
+    position: relative;
+    float: left;
+    left: 310px;
+}
+.cityName{
+    position: relative;
+    top: 10px;
+    left: 50px;
+}
+.allCity .cityFrom{
+    width: 100%;
+    height: 100%;
+    background-color: #edecf4;
+    border-radius: 5px;
+    font-size: medium;
+    width: 100%;
+    height: 150px;
+    border: 40px;
+    border-color: #6c61ff;
+    position: relative;
+}
+.allCity .cityFrom .act-takeOff{
+    position: relative;
+    left: 260px;
+    top: 10px;
+}
+.allCity .cityFrom .takeOffTime{
+    position: relative;
+    left: 260px;
+    top: 10px;
+    font-size: x-large;
+    color: #505abb;
+}
+.allCity .cityFrom .weather{
+    position: relative;
+    left: 30px;
+    top: -91px;
+}
+.allCity .cityFrom .dig{
+    position: relative;
+    left: 100px;
+    top: -129px;
+    color: #505abb;
+}
+.allCity .cityFrom .pm{
+    position: relative;
+    left: 100px;
+    top: -138px;
+    color: #505abb;
+}
+.allCity .cityFrom .delay{
+    position: relative;
+    left: 100px;
+    top: -147px;
+    color: #505abb;
+}
+.allCity .cityStop{
+    font-size: medium;
+    width: 100%;
+    border-radius: 5px;
+    height: 250px;
+    background-color: #edecf4;
+    position: relative;
+    top: 5px;
+}
+.allCity .cityStop .act-land{
+    position: relative;
+    left: 160px;
+    top: 10px;
+}
+.allCity .cityStop .landTime{
+    position: relative;
+    left: 160px;
+    top: 10px;
+    font-size: x-large;
+    color: #505abb;
+}
+.allCity .cityStop .luggage{
+    position: relative;
+    left: 420px;
+    top: -92px;
+}
+.allCity .cityStop .luggageInfo{
+    position: relative;
+    font-size: x-large;
+    color: #505abb;
+    left: 438px;
+    top: -92px;
+}
+.allCity .cityStop .landPost{
+    position: relative;
+    left: 680px;
+    top: -194px;
+}
+.allCity .cityStop .landPostInfo{
+    position: relative;
+    font-size: x-large;
+    color: #505abb;
+    left: 696px;
+    top: -194px;
+}
+.allCity .cityStop .act-takeOff{
+    position: relative;
+    left: 160px;
+    top: -190px;
+}
+.allCity .cityStop .takeOffTime{
+    position: relative;
+    font-size: x-large;
+    color: #505abb;
+    left: 160px;
+    top: -190px;
+}
+.allCity .cityStop .weather{
+    position: relative;
+    left: 420px;
+    top: -295px;
+}
+.allCity .cityStop .dig{
+    position: relative;
+    left: 490px;
+    top: -332px;
+    color: #505abb;
+}
+.allCity .cityStop .pm{
+    position: relative;
+    left: 490px;
+    top: -341px;
+    color: #505abb;
+}
+.allCity .cityStop .delay{
+    position: relative;
+    left: 490px;
+    top: -350px;
+    color: #505abb;
+}
+.allCity .cityLand{
+    font-size: medium;
+    width: 100%;
+    border-radius: 5px;
+    height: 250px;
+    background-color: #edecf4;
+    position: relative;
+    top: 10px;
+}
+.allCity .cityLand .dec-land{
+    position: relative;
+    left: 160px;
+    top: 10px
+}
+.allCity .cityLand .landTime{
+    position: relative;
+    left: 160px;
+    top: 10px;
+    font-size: x-large;
+    color: #505abb;
+}
+.allCity .cityLand .luggage{
+    position: relative;
+    left: 420px;
+    top: -92px;
+}
+.allCity .cityLand .luggageInfo{
+    position: relative;
+    font-size: x-large;
+    color: #505abb;
+    left: 438px;
+    top: -92px;
+}
+.allCity .cityLand .landPost{
+    position: relative;
+    left: 680px;
+    top: -194px;
+}
+.allCity .cityLand .landPostInfo{
+    position: relative;
+    font-size: x-large;
+    color: #505abb;
+    left: 696px;
+    top: -194px;
+}
+.allCity .cityLand .weather{
+    position: relative;
+    left: 160px;
+    top: -190px;
+}
+.allCity .cityLand .dig{
+    position: relative;
+    left: 230px;
+    top: -227px;
+    color: #505abb;
+}
+.allCity .cityLand .pm{
+    position: relative;
+    left: 230px;
+    top: -236px;
+    color: #505abb;
+}
+.allCity .cityLand .delay{
+    position: relative;
+    left: 230px;
+    top: -245px;
+    color: #505abb;
 }

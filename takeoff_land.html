@@ -26,7 +26,8 @@
     }
     function send(){
         var op = 2;
-        window.location.href = "flightInfo.html?op:" + op + "&flightCode:" + "" + "&cityFrom:" + fromCity + "&cityTo:" + toCity + "&data:" + dateString;
+        var login = 1;
+        window.location.href = "flightInfo.html?op:" + op + "&flightCode:" + "" + "&cityFrom:" + fromCity + "&cityTo:" + toCity + "&data:" + dateString + "&login:" + login;
     }
 </script>
 <div class="header">
@@ -37,7 +38,7 @@
     </div>
     <ul class="menu">
         <li class="top-menu-item top-menu-noclick">
-            <a class="menu-hd cur_pointer"><span>首页</span></a>
+            <a href="homepage.html" class="menu-hd cur_pointer"><span>首页</span></a>
         </li>
         <li class="top-menu-item top-menu-noclick">
             <a class="menu-hd"><span>航班查询</span></a>

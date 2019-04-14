@@ -12,6 +12,7 @@
         var cityFrom;
         var cityTo;
         var date;
+        var islogin = 0;
         if (url.indexOf("?") != -1) {
             var str = url.substr(1);//substr()方法返回从参数值开始到结束的字符串；
             strs = str.split("&");
@@ -25,6 +26,13 @@
             cityFrom = strs[2].split(":")[1];
             cityTo = strs[3].split(":")[1];
             date = strs[4].split(":")[1];
+            if(strs[5].split(":")[1] == "1"){
+                islogin = 1;
+            }
+            else{
+                islogin = 0;
+                document.getElementById("login").innerHTML = '<li class = "login"><a href="login.html" class="logbtn">登录/注册</a></li>';
+            }
         }
     </script>
 </head>
@@ -60,15 +68,16 @@
             </div>
         </li>
     </ul>
-    <ul>
-        <li class="login">
-            <a href="login.html" class="logbtn">登录/注册</a>
-        </li>
+    <ul id="login">
+
     </ul>
 </div>
 <div class="mainimage">
     <div class="image">
         <img src="image/page1.jpg" width="100%">
+    </div>
+    <div id="data-num" class="data-num">
+
     </div>
     <div id="data" class="data">
 
@@ -78,6 +87,7 @@
 <script>
     var responseData;
     var length;
+    var test=1;
     function ajaxFunction(){
         var xmlHttp;
         try{ // Firefox, Opera 8.0+, Safari
@@ -111,31 +121,43 @@
             var str = "";
             xhr.onreadystatechange = function(){
                 if(xhr.readyState==4){
+                    test = 0;
+                    var i = 0;
                     responseData = JSON.parse(xhr.responseText);
                     length = responseData.length;
-                    alert(JSON.stringify(responseData));
+                    document.getElementById("data-num").innerHTML="<p>共"+length+"条航班信息</p>";
                     str=str+'<table class="data-table">'+'<tr class="flight-data-hd"><th>所属航空公司</th><th>航班号</th><th>计划起飞</th><th>实际起飞</th><th>出发地</th><th>计划到达</th><th>实际到达</th><th>到达地</th><th>状态</th></tr>';
-                    for(var i = 0;i<length;i++){
+                    for(i = 0;i<length;i++){
+                        var info_url = JSON.stringify(responseData[i].flight_detailed_info_url);
                         str = str+'<tr>'+
-                            '<td colspan="2">'+JSON.stringify(responseData[i].corp_name)+'</td>'+
-                            '<td class="flight-data">'+JSON.stringify(responseData[i].flight_code)+'</td>'+
-                            '<td class="flight-data">'+JSON.stringify(responseData[i].dep_time_plan)+'</td>'+
-                            '<td class="flight-data">'+JSON.stringify(responseData[i].dep_time_act)+'</td>'+
-                            '<td class="flight-data">'+JSON.stringify(responseData[i].dep_airp)+'</td>'+
-                            '<td class="flight-data">'+JSON.stringify(responseData[i].arri_time_plan)+'</td>'+
-                            '<td class="flight-data">'+JSON.stringify(responseData[i].arri_time_act)+'</td>'+
-                            '<td class="flight-data">'+JSON.stringify(responseData[i].arri_airp)+'</td>'+
-                            '<td class="flight-data">'+JSON.stringify(responseData[i].flight_status)+'</td>'+
+                            '<td>'+JSON.stringify(responseData[i].corp_name)+'</td>'+
+                            '<td class="flight-data">'+deleteMark(JSON.stringify(responseData[i].flight_code))+'</td>'+
+                            '<td class="flight-data">'+deleteMark(JSON.stringify(responseData[i].dep_time_plan))+'</td>'+
+                            '<td class="flight-data">'+deleteMark(JSON.stringify(responseData[i].dep_time_act))+'</td>'+
+                            '<td class="flight-data">'+deleteMark(JSON.stringify(responseData[i].dep_airp))+'</td>'+
+                            '<td class="flight-data">'+deleteMark(JSON.stringify(responseData[i].arri_time_plan))+'</td>'+
+                            '<td class="flight-data">'+deleteMark(JSON.stringify(responseData[i].arri_time_act))+'</td>'+
+                            '<td class="flight-data">'+deleteMark(JSON.stringify(responseData[i].arri_airp))+'</td>'+
+                            '<td class="flight-data">'+deleteMark(JSON.stringify(responseData[i].flight_status))+'</td>'+
+                            '<td><input type="button" value="详细信息" onclick=detail(JSON.stringify(responseData['+ i +'].flight_detailed_info_url))></td>'+
                             '</tr>';
                     }
                     str=str+'</table>';
-                    str=str.replace(/"/g,'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp',)
                     document.getElementById("data").innerHTML=str;
                 }
             }
             xhr.open("POST","http://114.115.134.119:5000/beta/byFlightNumber",true);
             xhr.setRequestHeader("Content-type","application/json");
             xhr.send(jsonData);
+
+    }
+    function deleteMark(str){
+        var newStr;
+        newStr = str.replace(/"/g,'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp',);
+        return newStr;
+    }
+    function detail(detail){
+        window.location.href = "detialInfo.html?detail=" + detail + "&islogin=" + islogin;
     }
 </script>
 </html>

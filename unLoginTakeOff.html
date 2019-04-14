@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <title>航班助手</title>
     <link rel="stylesheet" href="style.css">
-    <script>
-
-    </script>
 </head>
 
 <body>
 <script>
-    var flightnum="1";
+    var fromCity;
+    var toCity;
     var date=new Date();
     var dateString;
     var responseData;
-    function getnum(num){
-        this.flightnum=num;
+    function getTake(fromCity){
+        this.fromCity=fromCity;
+    }
+    function getTo(toCity){
+        this.toCity=toCity;
     }
     function getdate(date){
         this.date = date;
@@ -24,9 +25,9 @@
         dateString = dateString.replace(/-/g,'',);
     }
     function send(){
-        var op = 1;
-        var login = 1;
-        window.location.href = "flightInfo.html?op:" + op + "&flightCode:" + flightnum + "&cityFrom:" + "" + "&cityTo:" + "" + "&data:" + dateString + "&login:" + login;
+        var op = 2;
+        var login = 0;
+        window.location.href = "flightInfo.html?op:" + op + "&flightCode:" + "" + "&cityFrom:" + fromCity + "&cityTo:" + toCity + "&data:" + dateString + "&login:" + login;
     }
 </script>
 <div class="header">
@@ -36,8 +37,8 @@
         </a>
     </div>
     <ul class="menu">
-        <li class="top-menu-item top-menu-noclick" id="HOME">
-            <a href="homepage.html" class="menu-hd cur_pointer"><span>首页</span></a>
+        <li class="top-menu-item top-menu-noclick">
+            <a href="unLogHomePage.html" class="menu-hd cur_pointer"><span>首页</span></a>
         </li>
         <li class="top-menu-item top-menu-noclick">
             <a class="menu-hd"><span>航班查询</span></a>
@@ -66,7 +67,8 @@
         <img src="image/page1.jpg" width="100%">
     </div>
     <div>
-        <p><input type="text" placeholder="请输入航班号，如CA111" maxlength="10" size="20" onchange="getnum(this.value)"></p>
+        <p><input type="text" placeholder="请输入出发地 如PEK" maxlength="10" size="20" onchange="getTake(this.value)"></p>
+        <p><input type="text" placeholder="请输入到达地 如SHA" maxlength="10" size="20" onchange="getTo(this.value)"></p>
         <p><input type="date" placeholder="出发日期" size="20" onchange="getdate(this.value)"></p>
         <p><input type="button" id="in" value="查询" onclick="send()"></p>
     </div>
