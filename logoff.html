@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>修改密码</title>
+    <title>航班助手</title>
     <script src="userInfo.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -44,18 +44,61 @@
     <div class="image">
         <img src="image/page1.jpg" width="100%">
     </div>
-    <div class="changepwd">
-        <p class="change">请输入原密码</p>
-        <p><input type="password" class="input-window" placeholder="6-13位数字或字母" maxlength="13" size="60" autofocus  onchange="getPassWord(this.value)"></p>
-        <p class="changeAgain">请输入新密码</p>
-        <p><input type="password" class="input-window" placeholder="6-13位数字或字母" maxlength="13" size="60" autofocus  onchange="getPassWord(this.value)"></p>
-        <p class="changeAgain">请再次输入新密码</p>
-        <p><input type="password" class="input-window" placeholder="6-13位数字或字母" maxlength="13" size="60" autofocus  onchange="getPassWord(this.value)"></p>
-        <p><input class="change-btn" id="change" type="button" onclick="login()" value="确认修改"></p>
+    <div class="logoff">
+        <p class="logoff1">注销后该账号将不可使用</p>
+        <p class="logoff2">请您务必再次确认</p>
+        <p><input class="logoffBtn" type="button" value="确认注销" onclick="logoff()"></p>
     </div>
 </div>
 </body>
 <script>
-    var localPage = "changepwd.html";
+    var localPage = "logoff.html";
+    function deleteMark(str){
+        var newStr;
+        newStr = str.replace(/"/g,'',);
+        return newStr;
+    }
+    function ajaxFunction(){
+        var xmlHttp;
+        try{ // Firefox, Opera 8.0+, Safari
+            xmlHttp=new XMLHttpRequest();
+        }
+        catch (e){
+            try{// Internet Explorer
+                xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e){
+                try{
+                    xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                catch (e){}
+            }
+        }
+
+        return xmlHttp;
+    }
+    function logoff() {
+        var jsonData = JSON.stringify({
+            username:get_cookie("user"),
+            token:deleteMark(get_cookie("token")),
+        })
+        var xhr = ajaxFunction();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState==4){
+                var responseData = JSON.parse(xhr.responseText);
+                if(responseData.status == "success!"){
+                    alert("注销成功！")
+                    logout();
+                    window.location.href = "homepage.html";
+                }
+                else{
+                    alert("注销失败！");
+                }
+            }
+        }
+        xhr.open("POST","http://114.115.134.119:5000/beta/logout",true);
+        xhr.setRequestHeader("Content-type","application/json");
+        xhr.send(jsonData);
+    }
 </script>
 </html>

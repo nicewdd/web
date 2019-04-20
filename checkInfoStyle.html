@@ -27,12 +27,12 @@
                 alert("您的用户名或密码为空！");
                 window.location.href = "login.html";
             }
-            else if(user.length < 6 || pwd.length < 6){
+            else if(user.length < 4 || pwd.length < 6){
                 alert("您的用户名或密码长度不正确");
                 window.location.href = "login.html";
             }
             else{
-                var test = /([a-z]|[A-Z]|[0-9]){6,13}/;
+                var test = /([a-z]|[A-Z]|[0-9]){4,13}/;
                 if(test.test(user) && test.test(pwd)){
                     checkValid();
                 }

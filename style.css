@@ -28,11 +28,6 @@
     height:auto;
     padding:8px 4px 0
 }
-/*.header .menu-dropdown .menu-dropdown-inner{*/
-    /*overflow:hidden;*/
-    /*display:table;*/
-    /*width:100%*/
-/*}*/
 .header{
     width:1200px;
     display:table;
@@ -125,6 +120,9 @@
     right:10px;
     top:28px
 }
+.header .clickBtn{
+    cursor: pointer;
+}
 .mainimage .image{
     margin: 0;
     position: absolute;
@@ -134,9 +132,153 @@
     left: 0px;
     opacity: 0.5;
 }
+.mainimage .welcome{
+    width: 500px;
+    margin: auto;
+}
+.mainimage .welcome .welcomeTo{
+    position: relative;
+    top: 200px;
+    font-size: 35px;
+    color: #6055dd;
+    left: 120px;
+    -webkit-user-select:none;
+}
+.mainimage .welcome .please{
+    position: relative;
+    top: 200px;
+    left: 40px;
+    font-size: 35px;
+    color: #6055dd;
+    -webkit-user-select:none;
+}
+/*
+以下是按航班号查询界面的css
+ */
+.mainimage .flightNumWindow{
+    position: relative;
+    top: 250px;
+    width: 1000px;
+    margin: auto;
+}
+.mainimage .flightNumWindow .flightNum{
+    position: relative;
+    top: 20px;
+    font-size: 23px;
+}
+.mainimage .flightNumWindow .flightNumInput{
+    background: #faffff;
+    line-height:2;
+    font-size: 1rem;
+    padding: 0.375rem 0.75rem;
+    border: 2px;
+    border-radius: 5px;
+    position: relative;
+    top: -40px;
+    left: 100px;
+}
+.mainimage .flightNumWindow .date{
+    position: relative;
+    top: -102px;
+    left: 385px;
+    font-size: 23px;
+}
+.mainimage .flightNumWindow .dateInput{
+    background: #faffff;
+    line-height:1.7;
+    font-size: 1.38rem;
+    padding: 0.375rem 0.75rem;
+    border: 2px;
+    border-radius: 5px;
+    position: relative;
+    top: -161px;
+    left: 510px;
+}
+.mainimage .flightNumWindow .flightNumBtn{
+    position: relative;
+    line-height:1.8;
+    top: -220px;
+    left: 770px;
+    font-size: 20px;
+    width: 200px;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #2d2d2d;
+}
+/*
+以下是按起始地查询界面的css
+ */
+.mainimage .takeOffWindow{
+    position: relative;
+    top: 250px;
+    width: 1250px;
+    margin: auto;
+}
+.mainimage .takeOffWindow .departure{
+    position: relative;
+    top: 20px;
+    font-size: 23px;
+}
+.mainimage .takeOffWindow .departureInput{
+    line-height:2;
+    font-size: 1rem;
+    padding: 0.375rem 0.75rem;
+    border: 2px;
+    border-radius: 5px;
+    position: relative;
+    top: -40px;
+    left: 100px;
+}
+.mainimage .takeOffWindow .arrive{
+    position: relative;
+    top: -100px;
+    left: 350px;
+    font-size: 23px;
+}
+.mainimage .takeOffWindow .arriveInput{
+    background: #faffff;
+    line-height:2;
+    font-size: 1rem;
+    padding: 0.375rem 0.75rem;
+    border: 2px;
+    border-radius: 5px;
+    position: relative;
+    top: -160px;
+    left: 450px;
+}
+.mainimage .takeOffWindow .date{
+    position: relative;
+    top: -220px;
+    left: 700px;
+    font-size: 23px;
+}
+.mainimage .takeOffWindow .dateInput{
+    background: #faffff;
+    line-height:1.7;
+    font-size: 1.38rem;
+    padding: 0.375rem 0.75rem;
+    border: 2px;
+    border-radius: 5px;
+    position: relative;
+    top: -280px;
+    left: 820px;
+}
+.mainimage .takeOffWindow .takeOffBtn{
+    position: relative;
+    line-height:1.8;
+    top: -340px;
+    left: 1050px;
+    font-size: 20px;
+    width: 200px;
+    border-radius: 5px;
+    color: #ffffff;
+    background-color: #2d2d2d;
+}
+/*
+ */
 .login{
     position: relative;
-    background: #1b89ff;
+    background: #7fb2ff;
     left: 50px;
     top: 20px;
     padding: 10px;
@@ -154,15 +296,31 @@
 .data{
     background: #c3c6e2;
     position: relative;
-    top: 100px;
+    top: 120px;
     border: 1px solid #b4bdb8;
+    width: 1300px;
+    margin: auto;
+    border-radius: 5px;
 }
 .data-num{
     position: relative;
-    top: 100px;
+    top: 120px;
+    width: 1300px;
+    margin: auto;
 }
 .flight-data-list{
     border: 10px solid red;
+}
+.data .flight-data{
+    text-align: center;
+    border: 22px;
+}
+.data .btn{
+    border-radius: 2px;
+    color: #5b4c7b;
+    font: bold;
+    border-color: navajowhite;
+    background-color: #d4ead3;
 }
 /*
 下面是有关登录页面的css
@@ -197,6 +355,10 @@
     position: relative;
     left: -260px;
 }
+.pwdAgain{
+    position: relative;
+    left: -228px;
+}
 .tel{
     position: relative;
     left: -230px;
@@ -223,7 +385,7 @@
     font-size: large;
     background-color: #4db960;
     border-radius: 5px;
-    width: 555px;
+    width: 538px;
     height: 30px;
     cursor: pointer;
 }
@@ -235,9 +397,162 @@
     color: black;
 }
 /*
+以下是修改密码的css
+ */
+.changepwd{
+    width: 550px;
+    margin: auto;
+}
+.changepwd .input-window{
+    position: relative;
+    top: 110px;
+    background: #faffff;
+    line-height:2;
+    font-size: 1rem;
+    padding: 0.375rem 0.75rem;
+    border: 2px;
+    border-radius: 5px;
+}
+.changepwd .change{
+    position: relative;
+    top: 110px;
+
+}
+.changepwd .changeAgain{
+    position: relative;
+    top: 110px;
+}
+.changepwd .change-btn{
+    position: relative;
+    font-family: 微软雅黑;
+    font-size: large;
+    background-color: #4db960;
+    border-radius: 5px;
+    width: 538px;
+    height: 30px;
+    cursor: pointer;
+    top: 110px;
+}
+/*
+以下是我的信息的css
+ */
+.mainimage .myInfo{
+    width: 500px;
+    margin: auto;
+    position: relative;
+    left: 50px;
+    top: 120px;
+}
+.mainimage .myInfo .myname{
+    position: relative;
+    font-size: 20px;
+}
+.mainimage .myInfo .username-text{
+    position: relative;
+    background: #faffff;
+    line-height:2;
+    font-size: 1.2rem;
+    padding: 0.375rem 0.75rem;
+    border: 2px;
+    border-radius: 5px;
+    width: 70%;
+}
+.mainimage .myInfo .myemail{
+    position: relative;
+    font-size: 20px;
+}
+.mainimage .myInfo .email-text{
+    position: relative;
+    background: #faffff;
+    line-height:2;
+    font-size: 1.2rem;
+    padding: 0.375rem 0.75rem;
+    border: 2px;
+    border-radius: 5px;
+    width: 70%;
+}
+.mainimage .myInfo .save{
+    position: relative;
+    font-family: 微软雅黑;
+    font-size: large;
+    background-color: #4db960;
+    border-radius: 5px;
+    width: 75%;
+    height: 35px;
+    cursor: pointer;
+}
+/*
+以下是注销的css
+ */
+.mainimage .logoff{
+    width: 400px;
+    margin: auto;
+}
+.mainimage .logoff1{
+    position: relative;
+    top: 150px;
+    color: #6055dd;
+    font-size: 30px;
+    -webkit-user-select:none;
+}
+.mainimage .logoff2{
+    position: relative;
+    top: 150px;
+    color: #6055dd;
+    font-size: 30px;
+    left: 40px;
+    -webkit-user-select:none;
+}
+.mainimage .logoffBtn{
+    position: relative;
+    top: 150px;
+    left: 80px;
+    font-size: 20px;
+    width: 150px;
+    background-color: #ff2321;
+}
+/*
+以下是关注列表的css
+ */
+.mainimage .follow-num{
+    width: 550px;
+    margin: auto;
+    position: relative;
+    top: 150px;
+    color: #6055dd;
+    font-size: large;
+}
+.mainimage .follow-num .not{
+    position: relative;
+    font-size: 35px;
+    left: 100px;
+    -webkit-user-select:none;
+}
+.mainimage .followlist{
+    width: 550px;
+    margin: auto;
+    font-size: large;
+    background-color: aliceblue;
+    border-radius: 5px;
+    position: relative;
+    top: 150px;
+    text-align: center;
+}
+.mainimage .followlist .follow-table .btn{
+    position: relative;
+    top: -2px;
+    border-radius: 2px;
+    color: #5b4c7b;
+    font: bold;
+    border-color: navajowhite;
+    background-color: #d4ead3;
+}
+/*
 以下是详细航班信息的css
  */
 .detail{
+    position: relative;
+    top: 100px;
     width: 800px;
     margin: auto;
 }
@@ -316,37 +631,61 @@
 }
 .allCity .cityFrom .act-takeOff{
     position: relative;
-    left: 260px;
-    top: 10px;
+    left: 320px;
+    top: -145px;
 }
 .allCity .cityFrom .takeOffTime{
     position: relative;
-    left: 260px;
-    top: 10px;
+    left: 320px;
+    top: -145px;
+    font-size: x-large;
+    color: #505abb;
+}
+.allCity .cityFrom .counter{
+    position: relative;
+    left: 490px;
+    top: -247px;
+}
+.allCity .cityFrom .counterInfo{
+    position: relative;
+    left: 495px;
+    top: -247px;
+    font-size: x-large;
+    color: #505abb;
+}
+.allCity .cityFrom .boardGate{
+    position: relative;
+    left: 670px;
+    top: -348px;
+}
+.allCity .cityFrom .boardGateInfo{
+    position: relative;
+    left: 679px;
+    top: -348px;
     font-size: x-large;
     color: #505abb;
 }
 .allCity .cityFrom .weather{
     position: relative;
-    left: 30px;
-    top: -91px;
+    left: 60px;
+    top: 3px;
 }
 .allCity .cityFrom .dig{
     position: relative;
-    left: 100px;
-    top: -129px;
+    left: 130px;
+    top: -34px;
     color: #505abb;
 }
 .allCity .cityFrom .pm{
     position: relative;
-    left: 100px;
-    top: -138px;
+    left: 130px;
+    top: -43px;
     color: #505abb;
 }
 .allCity .cityFrom .delay{
     position: relative;
-    left: 100px;
-    top: -147px;
+    left: 130px;
+    top: -52px;
     color: #505abb;
 }
 .allCity .cityStop{
@@ -360,140 +699,168 @@
 }
 .allCity .cityStop .act-land{
     position: relative;
-    left: 160px;
-    top: 10px;
+    left: 320px;
+    top: -145px;
 }
 .allCity .cityStop .landTime{
     position: relative;
-    left: 160px;
-    top: 10px;
+    left: 320px;
+    top: -145px;
     font-size: x-large;
     color: #505abb;
 }
 .allCity .cityStop .luggage{
     position: relative;
-    left: 420px;
-    top: -92px;
+    left: 490px;
+    top: -247px;
 }
 .allCity .cityStop .luggageInfo{
     position: relative;
     font-size: x-large;
     color: #505abb;
-    left: 438px;
-    top: -92px;
+    left: 500px;
+    top: -247px;
 }
 .allCity .cityStop .landPost{
     position: relative;
-    left: 680px;
-    top: -194px;
+    left: 670px;
+    top: -349px;
 }
 .allCity .cityStop .landPostInfo{
     position: relative;
     font-size: x-large;
     color: #505abb;
-    left: 696px;
-    top: -194px;
+    left: 678px;
+    top: -349px;
 }
 .allCity .cityStop .act-takeOff{
     position: relative;
-    left: 160px;
-    top: -190px;
+    left: 320px;
+    top: -345px;
 }
 .allCity .cityStop .takeOffTime{
     position: relative;
     font-size: x-large;
     color: #505abb;
-    left: 160px;
-    top: -190px;
+    left: 320px;
+    top: -345px;
+}
+.allCity .cityStop .counter{
+    position: relative;
+    left: 490px;
+    top: -446px;
+}
+.allCity .cityStop .counterInfo{
+    position: relative;
+    left: 495px;
+    top: -446px;
+    font-size: x-large;
+    color: #505abb;
+}
+.allCity .cityStop .boardGate{
+    position: relative;
+    left: 670px;
+    top: -547px;
+}
+.allCity .cityStop .boardGateInfo{
+    position: relative;
+    font-size: x-large;
+    color: #505abb;
+    left: 678px;
+    top: -547px;
 }
 .allCity .cityStop .weather{
     position: relative;
-    left: 420px;
-    top: -295px;
+    left: 60px;
+    top: 3px;
 }
 .allCity .cityStop .dig{
     position: relative;
-    left: 490px;
-    top: -332px;
+    left: 130px;
+    top: -34px;
     color: #505abb;
 }
 .allCity .cityStop .pm{
     position: relative;
-    left: 490px;
-    top: -341px;
+    left: 130px;
+    top: -43px;
     color: #505abb;
 }
 .allCity .cityStop .delay{
     position: relative;
-    left: 490px;
-    top: -350px;
+    left: 130px;
+    top: -52px;
     color: #505abb;
 }
 .allCity .cityLand{
     font-size: medium;
     width: 100%;
     border-radius: 5px;
-    height: 250px;
+    height: 150px;
     background-color: #edecf4;
     position: relative;
     top: 10px;
+    z-index: 1;
 }
 .allCity .cityLand .dec-land{
     position: relative;
-    left: 160px;
-    top: 10px
+    left: 320px;
+    top: -145px
 }
 .allCity .cityLand .landTime{
     position: relative;
-    left: 160px;
-    top: 10px;
+    left: 320px;
+    top: -145px;
     font-size: x-large;
     color: #505abb;
 }
 .allCity .cityLand .luggage{
     position: relative;
-    left: 420px;
-    top: -92px;
+    left: 490px;
+    top: -247px;
 }
 .allCity .cityLand .luggageInfo{
     position: relative;
     font-size: x-large;
     color: #505abb;
-    left: 438px;
-    top: -92px;
+    left: 500px;
+    top: -247px;
 }
 .allCity .cityLand .landPost{
     position: relative;
-    left: 680px;
-    top: -194px;
+    left: 670px;
+    top: -349px;
 }
 .allCity .cityLand .landPostInfo{
     position: relative;
     font-size: x-large;
     color: #505abb;
-    left: 696px;
-    top: -194px;
+    left: 678px;
+    top: -349px;
 }
 .allCity .cityLand .weather{
     position: relative;
-    left: 160px;
-    top: -190px;
+    left: 60px;
+    top: 3px;
 }
 .allCity .cityLand .dig{
     position: relative;
-    left: 230px;
-    top: -227px;
+    left: 130px;
+    top: -34px;
     color: #505abb;
 }
 .allCity .cityLand .pm{
     position: relative;
-    left: 230px;
-    top: -236px;
+    left: 130px;
+    top: -43px;
     color: #505abb;
 }
 .allCity .cityLand .delay{
     position: relative;
-    left: 230px;
-    top: -245px;
+    left: 130px;
+    top: -52px;
     color: #505abb;
+}
+.allCity .cityName{
+    color: #7b242d;
 }

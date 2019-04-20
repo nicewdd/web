@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>注册</title>
     <link rel="stylesheet" href="style.css">
+    <script src="userInfo.js"></script>
 </head>
 <body>
 <div class="header">
@@ -14,7 +15,7 @@
     </div>
     <ul class="menu">
         <li class="top-menu-item top-menu-noclick">
-            <a href="unLogHomePage.html" class="menu-hd cur_pointer"><span>首页</span></a>
+            <a href="homePage.html" class="menu-hd cur_pointer"><span>首页</span></a>
         </li>
         <li class="top-menu-item top-menu-noclick">
             <a class="menu-hd" ><span>航班查询</span></a>
@@ -29,10 +30,10 @@
             <a class="menu-hd"><span>个人中心</span></a>
             <div class="menu-dropdown">
                 <div class="menu-dropdown-inner">
-                    <p><a href="changepwd.html">修改密码</a></p>
-                    <p><a href="homepage.html">登出</a></p>
-                    <p><a href="personalinfo">我的信息</a></p>
-                    <p><a href="history">行程历史</a></p>
+                    <p><a class="clickBtn" onclick="toChangePwd(localPage)">修改密码</a></p>
+                    <p><a class="clickBtn" onclick="toMyInfo(localPage)">我的信息</a></p>
+                    <p><a class="clickBtn" onclick="toLogOff(localPage)">注销</a></p>
+                    <p><a class="clickBtn" onclick="toFollowList(localPage)">关注列表</a></p>
                 </div>
             </div>
         </li>
@@ -47,30 +48,30 @@
     </div>
     <div class="login-window">
         <p class="usename">用户名</p>
-        <p><input type="text" class="input-window" placeholder="6-13位数字或字母" maxlength="13" size="60" autofocus  onchange="getUserName(this.value)"></p>
+        <p><input type="text" id="username" class="input-window" placeholder="4-13位数字或字母" maxlength="13" size="60" autofocus></p>
         <p class="pwd">密码</p>
-        <p><input type="password" class="input-window" placeholder="6-13位数字或字母" maxlength="13" size="60" autofocus  onchange="getPassWord(this.value)"></p>
+        <p><input type="password" id="pwd" class="input-window" placeholder="6-13位数字或字母" maxlength="13" size="60" autofocus></p>
+        <p class="pwdAgain">再次输入密码</p>
+        <p><input type="password" id="pwdAgain" class="input-window" placeholder="6-13位数字或字母" maxlength="13" size="60" autofocus></p>
         <p class="email">绑定邮箱</p>
-        <p><input type="text" class="input-window" placeholder="请输入您的邮箱" maxlength="25" size="60" autofocus  onchange="getEmail(this.value)"></p>
+        <p><input type="text" id="email" class="input-window" placeholder="请输入您的邮箱" maxlength="25" size="60" autofocus></p>
         <p><input class="login-btn" type="button" onclick="register()" value="注册"></p>
     </div>
 </div>
 <script>
-    var userName="";
-    var passWord="";
-    var email="";
-    function getUserName(userName){
-        this.userName=userName;
-    }
-    function getPassWord(passWord){
-        this.passWord=passWord;
-    }
-    function getEmail(email){
-        this.email=email;
-    }
+    var localPage = "register.html";
     function register(){
         var op = 2;
-        window.location.href = "checkInfoStyle.html?op:" + op + "&user:" + userName + "&pwd:" + passWord + "&email:" + email;
+        var username = document.getElementById("username").value;
+        var pwd = document.getElementById("pwd").value;
+        var pwdAgain = document.getElementById("pwdAgain").value;
+        var email = document.getElementById("email").value;
+        if(pwd == pwdAgain){
+            window.location.href = "checkInfoStyle.html?op:" + op + "&user:" + username + "&pwd:" + pwd+ "&email:" + email;
+        }
+       else{
+           alert("两次密码不一致！");
+        }
     }
 </script>
 </body>
